@@ -1,0 +1,175 @@
+{% extends 'admins/admin_design.html' %}
+{% block adminblock %}
+{% load staticfiles %}
+<style>
+
+
+        .upload{
+            position: absolute;
+    top: 183px;;
+    margin-left: 167px;
+    padding: 0px;
+    width: 1123px;
+    height: 400px;
+    overflow: auto;
+}
+
+        .upload table{
+         width:43em;
+         text-align:center;
+         //border-collapse:collapse;
+         border-spacing:1px;
+         background:white;
+}
+
+        .upload table tr th{
+            color:white;
+}
+            .upload table tr th{
+            background:rgb(1, 176, 135);
+            padding:10px;
+}
+            .upload table tr td{
+            background-color:#70919d;
+             margin-left:center;
+            padding:10px;
+}
+            .upload table tr:hover td{
+            background:rgba(237, 236, 234);
+}
+
+</style>
+<style>
+div#bd {
+background-color: white;
+
+}
+div#gmap {
+
+    margin-top: 100px;
+    width: 40%;
+    height: 350px;
+    background-color: white;
+}
+.style4 {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 16pt;
+}
+</style>
+
+
+<body>
+
+<div class="upload">
+<form method="post" enctype="multipart/form-data" >
+
+
+   {% csrf_token %}
+    <table align="right" style="color:black">
+        <tr>
+            <td style="color:black;" ><b> TOURIST PLACE</b></td>
+            <td><input type="text" name="touplace"></td>
+        </tr>
+        <tr>
+            <td style="color:black"><b>NEAR BY PLACE</b></td>
+            <td><input type="text" name="neartou"></td>
+
+        </tr>
+        <tr>
+            <td style="color:black"><b> WHICH KIND OF PLACE</b></td>
+            <td><input type="text" name="spc"></td>
+        </tr><tr>
+            <td style="color:black"><b> TOURIST IMAGE</b></td>
+            <td><input type="file" name="touimg"></td>
+        </tr><tr>
+            <td style="color:black"><b> TOURIST IMAGE</b></td>
+            <td><input type="file" name="touimg1"></td>
+        </tr>
+
+        <tr>
+            <td style="color:black"><b>LATITUDE</b></td>
+            <td><input type="text" name="lat"></td>
+        </tr>
+        <tr>
+        <td style="color:black" ><b>LONGITUDE</b></td>
+        <td><input type="text" name="log"></td>
+        </tr>
+
+
+
+
+
+
+
+        <tr>
+            <td style="text-align:center;" colspan="2"><input type="submit" name="submit" value="submit"></td>
+        </tr>
+ </table>
+    </form>
+</div>
+ <div id="bd" style="margin-top: -75px;">
+                 <div id="gmap"></div>
+                lat:<span id="lat" ></span><br>
+                lon:<span id="lon" ></span><br/>
+                zoom level: <span id="zoom_level" style="background-color: white;"></span>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAz2K9SaXeYN3Ra9j7ec3Mkxfg9w9D6v8&callback=myMap"></script>
+   <script type="text/javascript">
+var map;
+var marker=false;
+function initialize() {
+  var myLatlng = new google.maps.LatLng(13.0422581,80.2171394);
+
+  var myOptions = {
+    zoom: 19,
+    center: myLatlng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+
+  }
+
+  map = new google.maps.Map(document.getElementById("gmap"), myOptions);
+
+  marker = new google.maps.Marker({
+      	position: myLatlng,
+      	map: map
+  	});
+
+  google.maps.event.addListener(map, 'center_changed', function() {
+  	var location = map.getCenter();
+	document.getElementById("lat").innerHTML = location.lat();
+	document.getElementById("lon").innerHTML = location.lng();
+    placeMarker(location);
+  });
+  google.maps.event.addListener(map, 'zoom_changed', function() {
+  	zoomLevel = map.getZoom();
+	document.getElementById("zoom_level").innerHTML = zoomLevel;
+  });
+  google.maps.event.addListener(marker, 'dblclick', function() {
+    zoomLevel = map.getZoom()+1;
+    if (zoomLevel == 20) {
+     zoomLevel = 10;
+   	}
+	document.getElementById("zoom_level").innerHTML = zoomLevel;
+	map.setZoom(zoomLevel);
+
+  });
+
+   document.getElementById("zoom_level").innerHTML = 16;
+  document.getElementById("lat").innerHTML = 13.053721679021347;
+  document.getElementById("lon").innerHTML = 80.22521737216266;
+
+}
+
+function placeMarker(location) {
+  var clickedLocation = new google.maps.LatLng(location);
+  marker.setPosition(location);
+}
+window.onload = function(){initialize();};
+
+</script>
+
+
+</div>
+{% endblock %}

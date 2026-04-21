@@ -1,0 +1,84 @@
+
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+    body{
+    background: url("{% static 'img3.webp' %}");
+ background-size: cover;
+    }
+        .menu table{
+          width:100%;
+          text-align:center;
+
+          }
+          .menu table td:hover{
+          background:;
+
+          }
+          .menu table td{
+          background:rgb(241, 241, 241);
+
+         }
+          .menu table,.menu table th,.menu table td {
+    border: ;
+    border-collapse: collapse;
+
+}
+.menu table th,.menu table  td {
+    padding: 15px;
+
+    }
+
+
+          .topic h1{
+          color:black;
+          padding:2px;
+          text-align:center;
+          border-style:none;
+          height:100px;
+          width:1330px;
+          float:left;
+
+
+          }
+
+
+
+    </style>
+</head>
+<body>
+<div class="background-image">
+    <div class="topic"><h1 style="color:#f5efe4;margin-top:10px;margin-left:30px;border-style:none;width:1300px;height:40px;border-color:black;background:;">
+        Intelligent tourist prediction system for sight seer using Machine Learning </h1></div>
+<div class="menu">
+        <table>
+            <tr>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'view_user_details' %}">USER DETAILS</a></td>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'upload_tourist' %}">UPLOAD TOURIST PLACE</a></td>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'view_tourist' %}">VIEW TOURIST PLACE</a></td>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'view_feedback' %}">VIEW FEEDBACK</a></td>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'cusbooking' %}">VIEW BOOKING DETAILS</a></td>
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'tourist' 'line' %}">TOURIST PLACE ANALYSIS</a></td>
+
+                <td><a  style="color:black;text-decoration: none;" href="{% url 'admin_loginpage' %}">LOGOUT</a></td>
+
+
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<div class="marqee">
+
+</div>
+<div class="mainholder">
+{% block adminblock %}
+{% endblock %}
+</div>
+
+</body>
+</html>

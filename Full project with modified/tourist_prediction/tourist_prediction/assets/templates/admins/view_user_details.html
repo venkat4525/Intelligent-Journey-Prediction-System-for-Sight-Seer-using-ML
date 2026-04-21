@@ -1,0 +1,80 @@
+{% extends 'admins/admin_design.html' %}
+{% block adminblock %}
+{% load staticfiles %}
+
+<style>
+    .userdetails{
+     position: absolute;
+    margin-top:50px;
+    margin-left:200px;
+    left:px;
+    padding:5px;
+    height:350px;
+    width:800px;
+
+    float:left;
+    }
+    .userdetails table{
+    width:50em;
+    text-align:center;
+
+    border-spacing:1px;
+    background:;
+}
+
+
+.userdetails table tr th{
+background:rgb(84, 126, 205);
+padding:5px;
+}
+.userdetails table tr td{
+background:rgb(160, 158, 159);
+padding:5px;
+}
+.userdetails table tr:hover td{
+background:rgba(0,0,255,0.5);
+}
+.sideimage{
+border-style:solid;
+ border-width:1px;
+ height:380px;
+ width:360px;
+ margin-top:50px;
+ margin-left:830px;
+ background: url("{% static 'images5.jpg' %}");
+ background-size: 100%100%;
+float:left;
+}
+</style>
+<div class="userdetails">
+<table>
+    <tr>
+        <th>FIRST NAME</th>
+        <th>LAST NAME</th>
+        <th>USER ID</th>
+        <th>MOBILE NUMBER</th>
+        <th>EMAIL</th>
+        <th>GENDER</th>
+        <th>YEAR OF BIRTH</th>
+        <th>ADDRESS</th>
+    </tr>
+    {% for i in obje %}
+    <tr>
+    <td style="color:white">{{i.firstname}}</td>
+    <td style="color:white">{{i.lastname}}</td>
+    <td style="color:white">{{i.userid}}</td>
+    <td style="color:white">{{i.mobilenumber}}</td>
+    <td style="color:white">{{i.email}}</td>
+    <td style="color:white">{{i.gender}}</td>
+    <td style="color:white">{{i.dob}}</td>
+    <td style="color:white">{{i.address}}</td>
+</tr>
+    {% endfor %}
+</table>
+</div>
+
+
+
+
+
+{% endblock %}

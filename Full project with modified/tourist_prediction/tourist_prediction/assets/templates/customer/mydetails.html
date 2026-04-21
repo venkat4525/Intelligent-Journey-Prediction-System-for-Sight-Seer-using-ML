@@ -1,0 +1,96 @@
+{% extends 'customer/design.html' %}
+{% block userblock %}
+{% load staticfiles %}
+<style>
+     .mydetails{
+    position: absolute;
+    top:-40px;
+    left:330px;
+    padding:10px;
+    width:500px;
+}
+
+.mydetails table{
+    width:30em;
+    text-align:center;
+    //border-collapse:collapse;
+    border-spacing:1px;
+    background:;
+}
+
+.mydetails table tr th{
+    color:;
+}
+.mydetails table tr th{
+background:
+padding:10px;
+}
+.mydetails table tr td{
+background:rgb(255 255 255);
+padding:10px;
+}
+.mydetails table tr:hover td{
+background:r);
+}
+.mydetailsimagage{
+border-style:solid;
+ border-width:1px;
+ height:300px;
+ width:300px;
+ margin-top:50px;
+ margin-left:740px;
+ background: url("{% static 'img1.webp' %}");
+ background-size: 100%100%;
+
+}
+
+
+</style>
+
+<div class="mydetails">
+<table>
+    <tr>
+        <tr >
+    <td style="color:"><label >USER ID</label></td>
+
+    <td style="color:">{{object.userid}}</td></tr><tr >
+    <td style="color:"><label >FIRST NAME</label></td>
+
+    <td style="color:">{{object.firstname}}</td></tr>
+    <tr><td style="color:"><label>LAST NAME</label></td>
+
+        <td style="color:">{{object.lastname}}</td></tr>
+
+
+    <tr><td style="color:"><label>EMAIL</label></td>
+
+        <td style="color:">{{object.email}}</td></tr>
+    <tr><td style="color:"><label>PASSWORD</label></td>
+
+        <td style="color:">{{object.password}}</td></tr>
+    <tr><td style="color:"><label>MOBILE NUMBER</label></td>
+
+        <td style="color:">{{object.mobilenumber}}</td></tr>
+
+    <tr><td style="color:"><label>GENDER</label></td>
+
+        <td style="color:">{{object.gender}}</td></tr>
+    <tr><td style="color:"><label>YEAR OF BIRTH</label></td>
+
+        <td style="color:">{{object.dob}}</td></tr>
+    <tr><td style="color:"><label>ADDRESS</label></td>
+
+        <td style="color:">{{object.address}}</td></tr>
+
+    </tr>
+
+</table>
+
+
+</div>
+
+
+
+
+
+{% endblock %}

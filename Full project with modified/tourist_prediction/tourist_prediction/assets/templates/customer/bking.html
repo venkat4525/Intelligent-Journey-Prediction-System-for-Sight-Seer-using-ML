@@ -1,0 +1,91 @@
+{% extends 'customer/design.html' %}
+{% block userblock %}
+{% load staticfiles %}
+<style>
+
+
+        .upload{
+            position: absolute;
+    top: 53px;;
+    margin-left: -197px;
+    padding: 0px;
+    width: 1123px;
+    height: 400px;
+    overflow: auto;
+}
+
+        .upload table{
+         width:43em;
+         text-align:center;
+         //border-collapse:collapse;
+         border-spacing:1px;
+         background:white;
+}
+
+        .upload table tr th{
+            color:white;
+}
+            .upload table tr th{
+            background:rgb(1, 176, 135);
+            padding:10px;
+}
+            .upload table tr td{
+            background-color:#70919d;
+             margin-left:center;
+            padding:10px;
+}
+            .upload table tr:hover td{
+            background:rgba(237, 236, 234);
+}
+
+</style>
+<style>
+div#bd {
+background-color: white;
+
+}
+div#gmap {
+
+    margin-top: 100px;
+    width: 40%;
+    height: 350px;
+    background-color: white;
+}
+.style4 {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 16pt;
+}
+</style>
+<body>
+
+<div class="upload">
+<form method="post" enctype="multipart/form-data" >
+
+
+   {% csrf_token %}
+    <table align="right" style="color:black">
+
+        <tr>
+            <td style="color:black"><b> Customer Name</b></td>
+            <td><input type="text" name="username" value="{{ form.firstname }}"></td>
+        </tr> <tr>
+            <td style="color:black"><b> Tourist place</b></td>
+            <td><input type="text" name="touristpla" value="{{ obj.touplace }}"></td>
+        </tr> <tr>
+            <td style="color:black"><b> Starting Date</b></td>
+            <td><input type="date" name="startdate"></td>
+        </tr><tr>
+            <td style="color:black"><b> Return date</b></td>
+            <td><input type="date" name="enddate"></td>
+        </tr><tr>
+            <td style="color:black"><b> No of Days</b></td>
+            <td><input type="number" name="dayno"></td>
+        </tr>
+        <tr>
+            <td style="text-align:center;" colspan="2"><input type="submit" name="submit" value="submit"></td>
+        </tr>
+ </table>
+    </form>
+</div>
+{% endblock %}

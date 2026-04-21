@@ -1,0 +1,125 @@
+{% extends 'admins/admin_design.html' %}
+{% block adminblock %}
+{% load staticfiles %}
+<style>
+
+
+
+    *{
+          box-sizing: border-box;
+       }
+
+        #myInput {
+          background: url("{% static '.jpg' %}");
+          background-size:contain;
+          background-position: 10px 1px;
+          background-repeat: no-repeat;
+          width: 194%;
+          margin-left:-5px;
+          font-size: 16px;
+          padding: 12px 20px 12px 60px;
+          border: 10px inset 00BFFF;
+          margin-bottom: 12px;
+          border-radius:10px;
+          margin-top: 100px;
+        }
+
+        #myTable {
+            font-family: Abel;
+    font-size: 16px;
+    border-collapse: collapse;
+    color: #333332;
+    background-color: #ffffff;
+    width: 84%;
+    position: absolute;
+    font-weight: bolder;
+    margin-left: 106px;
+    margin-top: 37px;
+
+        }
+
+        #myTable td, #myTable th {
+            border: 1px solid #ddd;
+            padding:-5px;
+        }
+
+
+
+         #myTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+            background-color: #1a1b1b;
+            color: #f5f5f5;
+        }
+        .submit{
+        background: url("{% static 'submit.png' %}");
+        background-size:100% 100%;
+        height:50px;
+        width:150px;
+        border-radius:10px;
+        margin-left:-134px;
+        }
+        .imgo{
+  #myInput {
+          background: url(/static/book15.jpeg);
+    background-size: 100% 100%;
+    margin-top: 65px;
+    position: absolute;
+    margin-top: -29px;
+    top: auto;
+    margin-left: -65px;
+    padding: 26px;
+    width: 103%;
+    height: 509px;
+    overflow: auto;
+}
+
+    </style>
+
+<body>
+
+
+
+<div class="main">
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="imgo">
+        <table id="myTable" >
+
+            <tr>
+
+                <th>CUSTOMER NAME</th>
+                <th>TOURIST PLACE</th>
+                <th>STARTING DATE</th>
+                <th>ENDING DATE</th>
+                <th>NUMBER OF DAYS</th>
+
+            </tr>
+            {% for v in objects %}
+            <tr>
+
+                <td>{{v.username}}</td>
+                <td>{{v.touristpla}}</td>
+                <td>{{v.startdate}}</td>
+                <td>{{v.enddate}}</td>
+                <td>{{v.dayno}}</td>
+
+
+
+
+
+
+
+            </tr>
+            {% endfor %}
+
+        </table>
+        </div>
+    </form>
+</div>
+</body>
+
+{% endblock %}
